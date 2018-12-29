@@ -64,7 +64,7 @@
 
       <hr class="star-light">
       <h2 class="font-weight-light mb-0">안녕하세요 반도체시스템공학과 소프트웨어 모임 CRUD입니다.</h2>
-      <h3 class="font-weight-light mb-0">-아직 완성되지 않은 임시 홈페이지 입니다-</h3>
+
     </div>
   </header>
 
@@ -87,23 +87,19 @@
         <div class="col-lg-4 ml-auto">
           <p class="lead">
             SHARE -
-            소프트웨어는 수행하는 프로젝트의 규모가 커질 수록 많은 개발자를 필요로 하고, 그 복잡도도 커집니다. 우리 동아리는 서로가 부족한
-            점을 채워주고, 다른
-            사람의 아이디어로 부터 배우면서 성장 할 수 있는 모임이 되겠습니다.
+            서로가 부족한 점을 채워주고, 다른 사람의 아이디어로 부터 배우면서 성장 할 수 있는 모임이 되겠습니다.
           </p>
         </div>
         <div class="col-lg-4 mr-auto">
           <p class="lead">
             SPECIALITY -
-            저희는 소프트웨어에 정말 열정이 있고 관심이 많은 사람들로만 구성되어 있습니다. 한 사람 한 사람이 정말 노력하고 열심히 해서 각자가 'specialist'가 되자는 비전을 가지고
-            있습니다.
+            저희는 열정이 넘치는 사람들로 구성되어 있습니다. 각자가 'specialist'가 되자는 비전을 가지고 있습니다.
           </p>
         </div>
         <div class="col-lg-4 mr-auto">
           <p class="lead">
             ENDLESS -
-            배움에는 끝이 없다고 했습니다. 특히 소프트웨어를 공부하는데에 있어서는 그 말이 더욱 더 잘 맞습니다. 자신의 배움과 지식의 도취에 안주하는 사람 없이, 또 다른 목표를 세워하며 공부하고,
-            연구하는 비전하에 끝까지 노력하는 단체가 될것입니다.
+            자신의 배움과 지식의 도취에 안주하는 사람 없이, 또 다른 목표를 세워하며 공부하고, 연구하는 모임이 되겠습니다.
           </p>
         </div>
       </div>
@@ -208,7 +204,7 @@
         <div class="col-lg-8 mx-auto">
           <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
           <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-          <form name="sentMessage" id="contactForm" novalidate="novalidate">
+          <form name="sentMessage" id="qna" novalidate="novalidate">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
                 <label>이메일 주소</label>
@@ -220,16 +216,15 @@
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
                 <label>질문/의견</label>
-                <input class="form-control" id="message" type="message" placeholder="질문/의견/비판 어느것이든 환영합니다." required="required"
-                  data-validation-required-message="어느 것이든 환영합니다! 무엇이든 걱정하지말고 적어주세요.">
+                <input class="form-control" id="message_qna" type="message" placeholder="질문/의견/비판 어느것이든 환영합니다."
+                  required="required" data-validation-required-message="어느 것이든 환영합니다! 무엇이든 걱정하지말고 적어주세요.">
                 <p class="help-block text-danger"></p>
               </div>
             </div>
             <br>
             <div id="success"></div>
             <div class="form-group">
-              <button type="submit" onclick="alert('기능 구축이 완료되지 않았습니다. 문의 사항은 불편하시겠지만 kjds1235@naver.com으로 보내주시면 감사하겠습니다.')"
-                class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
+              <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton_qna">Send</button>
             </div>
           </form>
         </div>
@@ -379,13 +374,36 @@
   <!-- Plugin JavaScript -->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
   <!-- Contact Form JavaScript -->
   <script src="js/jqBootstrapValidation.js"></script>
-  <script src="js/contact_me.js"></script>
+
 
   <!-- Custom scripts for this template -->
   <script src="js/freelancer.min.js"></script>
+
+  <script>
+    $('#sendMessageButton_qna').click(function () {
+      var formData = $("#qna").serialize();
+
+      $.ajax({
+        url: './qnasubmit',
+        type: 'post',
+        data: {
+          email_: document.getElementById('qna').elements.email.value,
+          message: document.getElementById('qna').elements.message_qna.value
+        },
+        success: function (data) {
+          alert(data);
+        },
+        error: function () {
+          alert('서버에 문제가 있습니다. 잠시 후에 다시 시도해주시길 바랍니다.')
+        }
+      })
+    })
+  </script>
+
 
 </body>
 

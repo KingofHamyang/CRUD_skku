@@ -1,10 +1,33 @@
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'seongjun6608@gmail.com',
+        pass: 'qaz741123'
+    }
+});
+
 module.exports = function (app) {
     app.get('/', function (req, res) {
         res.render('index.html');
-        console.log('asdfasf!!!');
     });
-    app.get('/about', function (req, res) {
-        res.render('cv.html');
-        console.log('asdfasf');
+    app.post('/qnasubmit', function (req, res) {
+        console.log(req.body);
+        var mailOptions = {
+            from: req.body["email_"],
+            to: 'seongjun6608@gmail.com',
+            subject: "message from " + req.body["email_"],
+            text: req.body["message"]
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+        res.send("정상적으로 전송되었습니다. 감사합니다.")
     });
 }
