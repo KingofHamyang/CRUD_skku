@@ -204,7 +204,7 @@
         <div class="col-lg-8 mx-auto">
           <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
           <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-          <form name="sentMessage" id="qna" novalidate="novalidate">
+          <form name="sentMessage" id="qna_message" novalidate="novalidate">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
                 <label>이메일 주소</label>
@@ -374,7 +374,8 @@
   <!-- Plugin JavaScript -->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
 
   <!-- Contact Form JavaScript -->
   <script src="js/jqBootstrapValidation.js"></script>
@@ -382,20 +383,19 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/freelancer.min.js"></script>
-
+  <script src="js/contact_me.min.js"></script>
   <script>
     $('#sendMessageButton_qna').click(function () {
-      var formData = $("#qna").serialize();
-
+      var email2 = document.getElementById('qna_message').elements.email.value
       $.ajax({
         url: './qnasubmit',
         type: 'post',
         data: {
-          email_: document.getElementById('qna').elements.email.value,
-          message: document.getElementById('qna').elements.message_qna.value
+          email_: document.getElementById('qna_message').elements.email.value,
+          message: document.getElementById('qna_message').elements.message_qna.value
         },
         success: function (data) {
-          alert(data);
+          alert("의견 감사합니다. " + email2 + " 로 답변 보내드리도록 하겠습니다.");
         },
         error: function () {
           alert('서버에 문제가 있습니다. 잠시 후에 다시 시도해주시길 바랍니다.')
