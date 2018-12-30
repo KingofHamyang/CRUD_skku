@@ -31,6 +31,6 @@ module.exports = function (app) {
         console.log(req.body["email_"]);
         console.log(req.body["message"]);
         console.log("##############################################")
-        res.send(2);
+        res.send("complete");
     });
 }
