@@ -20,8 +20,9 @@ app.use(bodyParser.urlencoded({
 
 
 app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+app.set('view engine', 'jade');
 app.engine('html', require('ejs').renderFile);
+
 app.use(express.static('public'));
 var router = require('./router/main_router')(app);
 

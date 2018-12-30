@@ -32,6 +32,7 @@
         "ejs": "^2.6.1",
         "express": "^4.16.4",
         "fs": "0.0.1-security",
+        "jade": "^1.11.0",
         "jquery": "3.3.1",
         "jquery.easing": "^1.4.1",
         "magnific-popup": "^1.1.0",

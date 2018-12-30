@@ -27,6 +27,11 @@ QnA_schema.statics.findOneByEmail = function (email) {
     }).exec()
 }
 
+QnA_schema.statics.findAll = function () {
+
+    return this.find().exec()
+}
+
 QnA_schema.statics.deleteByEmail = function (email) {
     return this.findOneAndRemove({
         email

@@ -8,6 +8,16 @@ module.exports = function (app) {
     app.get('/', function (req, res) {
         res.render('index.html');
     });
+    app.get('/qnalist', (req, res) => {
+        QnA_schema.findAll().then((element) => {
+            console.log(element.length)
+            res.render('qnalist', {
+                qnadata: element,
+                size: element.length
+            });
+        })
+
+    });
     app.post('/qnasubmit', function (req, res) {
         console.log(req.body);
 
