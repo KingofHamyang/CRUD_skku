@@ -386,7 +386,8 @@
   <script src="js/contact_me.min.js"></script>
   <script>
     $('#sendMessageButton_qna').click(function () {
-      var email2 = document.getElementById('qna_message').elements.email.value
+      var email2 = document.getElementById('qna_message').elements.email.value;
+      alert("의견 감사합니다!");
       $.ajax({
         url: './qnasubmit',
         type: 'post',
