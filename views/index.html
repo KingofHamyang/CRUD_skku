@@ -395,7 +395,7 @@
           message: document.getElementById('qna_message').elements.message_qna.value
         },
         success: function (data) {
-          alert("의견 감사합니다. " + email2 + " 로 답변 보내드리도록 하겠습니다.");
+          alert(data);
         },
         error: function () {
           alert('서버에 문제가 있습니다. 잠시 후에 다시 시도해주시길 바랍니다.')
