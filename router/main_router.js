@@ -31,6 +31,6 @@ module.exports = function (app) {
         console.log(req.body["email_"]);
         console.log(req.body["message"]);
         console.log("##############################################")
-        res.send("정상적으로 전송되었습니다. 감사합니다.")
+        res.send("complete")
     });
 }
