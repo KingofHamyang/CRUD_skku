@@ -34,9 +34,7 @@ module.exports = function (app) {
         QnA_schema.create(email, message);
 
 
-        res.json({
-            message: "good!"
-        })
+        res.send("good")
 
 
 
