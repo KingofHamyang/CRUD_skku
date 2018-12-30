@@ -1,12 +1,8 @@
 var nodemailer = require('nodemailer');
+var fs = require('fs')
 
-var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'seongjun6608@gmail.com',
-        pass: 'qaz741123'
-    }
-});
+const QnA_schema = require('./qna')
+
 
 module.exports = function (app) {
     app.get('/', function (req, res) {
@@ -14,25 +10,34 @@ module.exports = function (app) {
     });
     app.post('/qnasubmit', function (req, res) {
         console.log(req.body);
-        /* var mailOptions = {
-             from: req.body["email_"],
-             to: 'seongjun6608@gmail.com',
-             subject: "message from " + req.body["email_"],
-             text: req.body["message"]
-         };
 
-         transporter.sendMail(mailOptions, function (error, info) {
-             if (error) {
-                 console.log(error);
-             } else {
-                 console.log('Email sent: ' + info.response);
-             }
-         });*/
         console.log(req.body["email_"]);
         console.log(req.body["message"]);
-        console.log("##############################################")
+        console.log("##############################################");
+
+        const email = req.body["email_"];
+        const message = req.body["message"]
+
+        // create a new user if does not exist
+
+
+        QnA_schema.create(email, message);
+
+
         res.json({
-            message: "complete"
-        });
+            message: "good!"
+        })
+
+
+
+
+
+
+        // check username duplication
+
+
+
+
+
     });
 }

@@ -1,7 +1,11 @@
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require('body-parser');
-var nodemailer = require('nodemailer');
+const mongoose = require("mongoose");
+
+const config = require("./config");
+
+
 
 
 
@@ -20,6 +24,13 @@ app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 app.use(express.static('public'));
 var router = require('./router/main_router')(app);
+
+mongoose.connect(config.mongodbUri_userdata);
+const db = mongoose.connection;
+db.on("error", console.error);
+db.once("open", () => {
+    console.log("connected to mongodb server");
+});
 
 app.listen(8080, () => {
     console.log(`Express is running on port 8080`);
