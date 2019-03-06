@@ -23,7 +23,7 @@ QnA_schema.statics.create = function (email, message) {
 QnA_schema.statics.findOneByEmail = function (email) {
     console.log("given has is" + email);
     return this.findOne({
-        email
+        email: email
     }).exec()
 }
 
@@ -34,9 +34,10 @@ QnA_schema.statics.findAll = function () {
 
 QnA_schema.statics.deleteByEmail = function (email) {
     return this.findOneAndRemove({
-        email
+        email: email
     })
 }
+
 
 
 

@@ -1,0 +1,14 @@
+html
+  head
+    title Apply section
+  body
+    h1 Apply section
+    ul
+      -for(var i=0; i<size; i++)
+        li= applydata[i]["name"]
+        li= applydata[i]["email"]
+        li= applydata[i]["phone"]
+        li= applydata[i]["studentID"]
+        li= applydata[i]["password"]
+        li= applydata[i]["message"]
+        li --------------------------
