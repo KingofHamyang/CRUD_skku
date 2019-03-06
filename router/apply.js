@@ -43,6 +43,8 @@ Apply_schema.statics.findAll = function () {
 }
 
 Apply_schema.statics.deleteByStudentID = function (StudentID) {
+    console.log("delete")
+    console.log(StudentID)
     return this.findOneAndRemove({
         studentID: StudentID
     })

@@ -139,18 +139,39 @@ module.exports = function (app) {
         let studentID = req.body["studentID"];
         let password = req.body["password"];
 
-        Apply_schema.deleteByStudentID(studentID).then((element) => {
-            console.log(element)
-            if (element) {
-                password_stored = element["password"];
+
+
+        const create = (err) => {
+            console.log(err);
+            if (err) {
+
+                password_stored = err["password"];
                 if (password != password_stored) {
                     res.send("비밀번호가 틀렸습니다. 다시 확인해주세요.")
                 } else {
-                    res.send("지원서가 정상적으로 삭제되었습니다. 지원해주셔서 감사합니다.")
+                    res.send("지원서가 정상적으로 삭제되었습니다. 지원해주셔서 감사합니다." + err["studentID"])
+                    return Apply_schema.deleteByStudentID(err["studentID"])
                 }
+
+
             } else {
-                res.send("해당 학번으로 지원된 이력이 없습니다. 학번을 확인해주세요.");
+                throw new Error('username exists, try again!')
+
             }
-        })
+        }
+
+        const onError = (error) => {
+            console.log(error)
+            res.send("해당 학번으로 지원된 이력이 없습니다. 학번을 확인해주세요.");
+        }
+
+
+        Apply_schema.findOneByStudentID(studentID)
+            .then(create)
+
+            .catch(onError)
+
+
+
     });
 }
