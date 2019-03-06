@@ -62,13 +62,15 @@ module.exports = function (app) {
         console.log(req.body);
 
         console.log(req.body["email"]);
-        console.log(req.body["message"]);
+        console.log(req.body["message1"]);
         console.log(req.body["name"]);
         console.log(req.body["studentID"]);
         console.log("##############################################");
 
         const name = req.body["name"];
-        const message = req.body["message"]
+        const message1 = req.body["message1"];
+        const message2 = req.body["message2"];
+        const message3 = req.body["message3"];
         const studentID = req.body["studentID"];
         const phone = req.body["phone"]
         const password = req.body["password"];
@@ -82,7 +84,7 @@ module.exports = function (app) {
             } else {
 
 
-                return Apply_schema.create(name, studentID, email, phone, password, message)
+                return Apply_schema.create(name, studentID, email, phone, password, message1, message2, message3)
 
             }
         }
@@ -127,7 +129,7 @@ module.exports = function (app) {
                 if (password != password_stored) {
                     res.send("비밀번호가 틀렸습니다. 다시 확인해주세요.")
                 } else {
-                    res.send(element["message"])
+                    res.send("<li>"+element["message1"] +"</li> <li>" + element["message2"] + "</li> <li>"+element["message3"]+"</li>")
                 }
             } else {
                 res.send("해당 학번으로 지원된 이력이 없습니다. 학번을 확인해주세요.");

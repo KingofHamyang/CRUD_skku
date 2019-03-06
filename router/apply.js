@@ -8,19 +8,23 @@ const Apply_schema = new Schema({
     email: String,
     phone: String,
     password: String,
-    message: String
+    message1: String,
+    message2: String,
+    message3: String
 
 })
 
 // create new User document
-Apply_schema.statics.create = function (name, studentID, email, phone, password, message) {
+Apply_schema.statics.create = function (name, studentID, email, phone, password, message1, message2, message3) {
     const UserInfo = new this({
         name,
         studentID,
         email,
         phone,
         password,
-        message
+        message1,
+        message2,
+        message3
     })
     // return the Promise
     console.log(email);

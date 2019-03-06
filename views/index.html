@@ -200,8 +200,24 @@
             </div>
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                <label>Message</label>
-                <textarea class="form-control" id="message" rows="10" placeholder="자신을 어필할 수 있는 무엇이든 적어주세요!" required="required"
+                <label>Answer1</label>
+                <textarea class="form-control" id="message1" rows="10" placeholder="어떤 기대를 가지고 지원하게 되었나요?" required="required"
+                  data-validation-required-message="어떤 기대를 가지고 지원하게 되었나요?"></textarea>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Answer2</label>
+                <textarea class="form-control" id="message2" rows="10" placeholder="만들고 싶은 서비스나 공부하고 싶은게 있나요?" required="required"
+                  data-validation-required-message="만들고 싶은 서비스나 공부하고 싶은게 있나요?"></textarea>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Answer3</label>
+                <textarea class="form-control" id="message3" rows="10" placeholder="프로그래밍이나 개발에 얼마나 친숙하시나요? 자신이 해봤던 것을 적어주세요.(없으면 없다라고 써주셔도 됩니다!)" required="required"
                   data-validation-required-message="자신을 어필할 수 있는 무엇이든 적어주세요!"></textarea>
                 <p class="help-block text-danger"></p>
               </div>
@@ -479,7 +495,9 @@
         type: 'post',
         data: {
           name: document.getElementById('contactForm_message').elements.name.value,
-          message: document.getElementById('contactForm_message').elements.message.value,
+          message1: document.getElementById('contactForm_message').elements.message1.value,
+          message2: document.getElementById('contactForm_message').elements.message2.value,
+          message3: document.getElementById('contactForm_message').elements.message3.value,
           studentID: document.getElementById('contactForm_message').elements.studentID.value,
           phone: document.getElementById('contactForm_message').elements.phone.value,
           password: document.getElementById('contactForm_message').elements.password.value,
